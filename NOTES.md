@@ -58,3 +58,9 @@ https://material.angular.io/components/toolbar/overview
 - Import the MatToolbarModule into the AngularMaterialModule
 - Use a pattern that allow us to import and export desired modules
 - Use a Toolbar component on the AppComponent template
+
+## Import our second Angular Material Component
+
+- Let's import and export the MatSlideToggleModule
+- Extend our toolbar component to include our switch theme toggle
+- Configure the toggle with some options
