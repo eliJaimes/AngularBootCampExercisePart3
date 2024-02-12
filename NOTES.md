@@ -50,3 +50,11 @@ ng generate module AngularMaterial --module app --routing false --flat --dry-run
 ```
 
 https://angular.io/cli/generate#module-command
+
+## Import our first Angular Material Component
+
+https://material.angular.io/components/toolbar/overview
+
+- Import the MatToolbarModule into the AngularMaterialModule
+- Use a pattern that allow us to import and export desired modules
+- Use a Toolbar component on the AppComponent template

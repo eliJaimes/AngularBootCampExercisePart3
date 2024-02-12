@@ -1,10 +1,12 @@
 /* ••[1]••••••••••••••••••••••••• angular-material.module.ts •••••••••••••••••••••••••••••• */
 
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+const AngularMaterialModules: Array<Type<unknown>> = [MatToolbarModule];
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
+  exports: [AngularMaterialModules],
+  imports: [AngularMaterialModules],
 })
 export class AngularMaterialModule {}

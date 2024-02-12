@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
 })
-export class AppComponent {}
+export class AppComponent {
+  protected appName: string = 'Tour Of Heroes';
+}
