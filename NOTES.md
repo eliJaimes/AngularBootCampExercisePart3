@@ -40,3 +40,13 @@ https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colo
 - Manually set the background according to the theme
 
 https://material.angular.io/guide/theming-your-components
+
+## Create an Angular Material module
+
+- It is a good practice to Isolate the Angular Material Module and in there import needed Angular Material components
+
+```shell
+ng generate module AngularMaterial --module app --routing false --flat --dry-run
+```
+
+https://angular.io/cli/generate#module-command
