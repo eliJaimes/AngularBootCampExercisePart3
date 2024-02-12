@@ -64,3 +64,9 @@ https://material.angular.io/components/toolbar/overview
 - Let's import and export the MatSlideToggleModule
 - Extend our toolbar component to include our switch theme toggle
 - Configure the toggle with some options
+
+## Set switch theme logic
+
+- Inject the DOCUMENT token to have access to the DOM
+- Inject the Renderer2 class to manipulate DOM elements
+- From this point we have a basic setup and we can start the Angular Tour Of Heroes tutorial
