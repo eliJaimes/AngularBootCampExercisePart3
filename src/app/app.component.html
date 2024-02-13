@@ -11,4 +11,19 @@
   </mat-slide-toggle>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<nav mat-tab-nav-bar [tabPanel]="matTabNavPanelRef">
+  <a
+    mat-tab-link
+    *ngFor="let link of links"
+    [routerLink]="link.path"
+    [routerLinkActiveOptions]="{ exact: link.exact || false }"
+    routerLinkActive
+    #routerLinkActiveRef="routerLinkActive"
+    [active]="routerLinkActiveRef.isActive"
+  >
+    {{ link.label }}
+  </a>
+</nav>
+<mat-tab-nav-panel #matTabNavPanelRef>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

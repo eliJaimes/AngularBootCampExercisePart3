@@ -1,6 +1,7 @@
 /* ••[1]••••••••••••••••••••••••• app.component.ts •••••••••••••••••••••••••••••• */
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { LinkT } from './entities/link.type';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
@@ -10,6 +11,22 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 })
 export class AppComponent {
   protected appName: string = 'Tour Of Heroes';
+
+  protected links: Array<LinkT> = [
+    {
+      exact: true,
+      label: 'Home',
+      path: '',
+    },
+    {
+      label: 'Albums',
+      path: 'albums',
+    },
+    {
+      label: 'Users',
+      path: 'users',
+    },
+  ];
 
   public constructor(
     @Inject(DOCUMENT) private readonly document: Document,

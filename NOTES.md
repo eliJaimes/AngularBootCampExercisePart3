@@ -140,3 +140,8 @@ https://v16.material.angular.io/components/tabs/overview
 
 - Add routes to 'src\app\app-routing.module.ts'
 - Add a 'router-outlet' directive into AppComponent template
+
+## Use the MatTabsComponent
+
+- Configure the AppComponent to include a links property
+- Configure the AppComponent template to use the MatTabs component

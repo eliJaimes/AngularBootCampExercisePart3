@@ -1,5 +1,16 @@
 // ••[1]••••••••••••••••••••••••• app.component.scss •••••••••••••••••••••••••••••• //
+
+/* stylelint-disable selector-no-qualifying-type */
 .app-name {
 	display: flex;
 	flex: 1 1 auto;
+}
+
+nav[mat-tab-nav-bar] {
+	margin: 1em
+}
+
+mat-tab-nav-panel {
+	display: block;
+	margin: 1em;
 }
