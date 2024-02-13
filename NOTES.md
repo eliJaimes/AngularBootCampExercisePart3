@@ -103,3 +103,29 @@ ng generate service app-data/albums/albums --skip-tests --dry-run
 
 - Include InMemoryWebApiModule on 'src\app\app.module.ts' and configure the module
 - Include HttpClientModule on 'src\app\app.module.ts'
+
+# Create components and modules
+
+- Create HomeModule and HomeComponent
+
+```shell
+ng generate module home --module app --routing false --dry-run
+
+ng generate component home/Home --module home --skip-tests --dry-run
+```
+
+- Create UserModule and UserListComponent
+
+```shell
+ng generate module user --module app --routing false --dry-run
+
+ng generate component user/UserList --module user --skip-tests --dry-run
+```
+
+- Create AlbumModule and AlbumListComponent
+
+```shell
+ng generate module album --module app --routing false --dry-run
+
+ng generate component album/AlbumList --module album --skip-tests --dry-run
+```
