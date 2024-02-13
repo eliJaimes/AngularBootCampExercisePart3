@@ -2,10 +2,12 @@
 
 import { NgModule, Type } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 const AngularMaterialModules: Array<Type<unknown>> = [
   MatSlideToggleModule,
+  MatTabsModule,
   MatToolbarModule,
 ];
 
