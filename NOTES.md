@@ -70,3 +70,36 @@ https://material.angular.io/components/toolbar/overview
 - Inject the DOCUMENT token to have access to the DOM
 - Inject the Renderer2 class to manipulate DOM elements
 - From this point we have a basic setup and we can start the Angular Tour Of Heroes tutorial
+
+## Set InMemoryWebApi and Data Services
+
+https://www.npmjs.com/package/angular-in-memory-web-api
+
+- We to install the 'angular-in-memory-web-api' package
+
+```shell
+npm i angular-in-memory-web-api
+```
+
+- Create 'src\app\app-data' folder
+- Create 'src\app\app-data\users' folder
+- Create 'src\app\app-data\users\user.type.ts' file with content
+- Create 'src\app\app-data\users\user.data.ts' file with content
+- Create UsersService
+
+```shell
+ng generate service app-data/users/users --skip-tests --dry-run
+```
+
+- Create 'src\app\app-data\albums' folder
+- Create 'src\app\app-data\albums\album.type.ts' file with content
+- Create 'src\app\app-data\albums\album.data.ts' file with content
+- Create 'src\app\app-data\app-data.ts' file with content
+- Create AlbumsService
+
+```shell
+ng generate service app-data/albums/albums --skip-tests --dry-run
+```
+
+- Include InMemoryWebApiModule on 'src\app\app.module.ts' and configure the module
+- Include HttpClientModule on 'src\app\app.module.ts'
