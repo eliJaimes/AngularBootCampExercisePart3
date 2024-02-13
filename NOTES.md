@@ -130,8 +130,13 @@ ng generate module album --module app --routing false --dry-run
 ng generate component album/AlbumList --module album --skip-tests --dry-run
 ```
 
-### Include MatTabsModule from Angular Material
+## Include MatTabsModule from Angular Material
 
 https://v16.material.angular.io/components/tabs/overview
 
 - Import the MatTabsModule into the AngularMaterialModule
+
+## Configure the router with routes
+
+- Add routes to 'src\app\app-routing.module.ts'
+- Add a 'router-outlet' directive into AppComponent template
