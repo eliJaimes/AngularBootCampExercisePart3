@@ -192,3 +192,12 @@ https://fonts.google.com/icons
 - Import the MatListModule into the AngularMaterialModule
 - Import the MatIconModule into the AngularMaterialModule
 - Use a MatList component to render the albums
+
+## Render Users on UserListComponent
+
+- On 'src\app\app-data\users\user.type.ts' lets create a type UserIdT out of UserT
+- On 'src\app\app-data\users\users.service.ts' lets expose an usersId$ that maps users$ to a less complex type
+
+- Inject UsersService on UserListComponent
+- Create an usersId$ property on UserListComponent
+- Use a MatList component to render the users

@@ -7,4 +7,13 @@
   <mat-card-content>
     <p>{{ contentLabel }}</p>
   </mat-card-content>
+
+  <mat-list>
+    <div mat-subheader>{{ listTitleLabel }}</div>
+    <mat-list-item *ngFor="let usersId of usersId$ | async">
+      <mat-icon matListItemIcon>account_circle</mat-icon>
+      <div matListItemTitle>{{ usersId.name | titlecase }}</div>
+      <div matListItemLine>{{ usersId.email }}</div>
+    </mat-list-item>
+  </mat-list>
 </mat-card>

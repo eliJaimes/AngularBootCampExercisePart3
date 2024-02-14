@@ -25,3 +25,5 @@ export type UserT = {
   username: string;
   website: string;
 };
+
+export type UserIdT = Pick<UserT, 'name' | 'email'>;
