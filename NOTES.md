@@ -180,3 +180,15 @@ https://material.angular.io/components/button/overview
 - Import the AngularMaterialModule into the UserModule
 - Improve UI with MatCard on UserListComponent
 - Fix application title, does anyone notice this ☺
+
+## Render Albums on AlbumListComponent
+
+https://material.angular.io/components/list/overview
+https://material.angular.io/components/icon/overview
+https://fonts.google.com/icons
+
+- Inject AlbumsService on AlbumListComponent
+- Create an albums$ property on AlbumListComponent
+- Import the MatListModule into the AngularMaterialModule
+- Import the MatIconModule into the AngularMaterialModule
+- Use a MatList component to render the albums
