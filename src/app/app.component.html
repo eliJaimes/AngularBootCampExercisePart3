@@ -11,7 +11,11 @@
   </mat-slide-toggle>
 </mat-toolbar>
 
-<nav mat-tab-nav-bar [tabPanel]="matTabNavPanelRef">
+<nav
+  mat-tab-nav-bar
+  [tabPanel]="matTabNavPanelRef"
+  *ngIf="hideMatTabNavBar$ | async"
+>
   <a
     mat-tab-link
     *ngFor="let link of links"

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlbumListComponent } from './album/album-list/album-list.component';
 import { HomeComponent } from './home/home/home.component';
 import { NgModule } from '@angular/core';
+import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 
 const routes: Routes = [
@@ -17,7 +18,15 @@ const routes: Routes = [
   },
   {
     component: UserListComponent,
+
     path: 'users',
+  },
+  {
+    component: NotFoundComponent,
+    data: {
+      notFound: 'true',
+    },
+    path: '**',
   },
 ];
 

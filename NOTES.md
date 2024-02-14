@@ -145,3 +145,11 @@ https://v16.material.angular.io/components/tabs/overview
 
 - Configure the AppComponent to include a links property
 - Configure the AppComponent template to use the MatTabs component
+
+## Add NotFound modules, component and logic
+
+```shell
+ng generate module notFound --module app --routing false --dry-run
+
+ng generate component not-found/notFound --module not-found --skip-tests --dry-run
+```

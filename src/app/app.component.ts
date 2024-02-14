@@ -1,7 +1,10 @@
 /* ••[1]••••••••••••••••••••••••• app.component.ts •••••••••••••••••••••••••••••• */
+import { ActivationStart, Router } from '@angular/router';
 import { Component, Inject, Renderer2 } from '@angular/core';
+import { filter, Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { LinkT } from './entities/link.type';
+import { map } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
@@ -28,9 +31,18 @@ export class AppComponent {
     },
   ];
 
+  protected hideMatTabNavBar$: Observable<boolean> = this.router.events.pipe(
+    filter((data: unknown): boolean => data instanceof ActivationStart),
+    map(
+      (data: unknown): boolean =>
+        !(data as ActivationStart).snapshot.data['notFound']
+    )
+  );
+
   public constructor(
     @Inject(DOCUMENT) private readonly document: Document,
-    private readonly renderer2: Renderer2
+    private readonly renderer2: Renderer2,
+    private readonly router: Router
   ) {}
 
   protected themeChangeHandler(event: MatSlideToggleChange): void {
