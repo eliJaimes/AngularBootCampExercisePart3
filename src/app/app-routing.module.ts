@@ -18,7 +18,6 @@ const routes: Routes = [
   },
   {
     component: UserListComponent,
-
     path: 'users',
   },
   {

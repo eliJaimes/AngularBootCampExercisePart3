@@ -153,3 +153,15 @@ ng generate module notFound --module app --routing false --dry-run
 
 ng generate component not-found/notFound --module not-found --skip-tests --dry-run
 ```
+
+## Improve NotFoundComponent UI and include home navigation
+
+https://material.angular.io/components/card/overview
+https://material.angular.io/components/button/overview
+
+- Import the MatCardModule into the AngularMaterialModule
+- Import the MatButtonModule into the AngularMaterialModule
+- Import the AngularMaterialModule into the NotFoundModule
+- Import the RouterModule into the NotFoundModule
+- Improve NotFoundComponent UI, using MatCard and MatButton components
+- Use the .app-name element on AppComponent template as a home link

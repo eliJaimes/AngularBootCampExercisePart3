@@ -1,13 +1,13 @@
 <!-- ••[1]••••••••••••••••••••••••• app.component.html •••••••••••••••••••••••••••••• -->
 
 <mat-toolbar>
-  <span class="app-name">{{ appName }}</span>
+  <span class="app-name" routerLink="/">{{ appNameLabel }}</span>
   <mat-slide-toggle
     checked
     hideIcon
     labelPosition="before"
     (change)="themeChangeHandler($event)"
-    >Dark theme:
+    >{{ themeToggleLabel }}
   </mat-slide-toggle>
 </mat-toolbar>
 
