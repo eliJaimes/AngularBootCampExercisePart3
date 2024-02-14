@@ -39,6 +39,8 @@ $exercise-part3-dark-theme: mat.define-dark-theme((color: (primary: $exercise-pa
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
+@include mat.all-component-typographies();
+
 @include mat.all-component-themes($exercise-part3-light-theme);
 
 html,
@@ -55,5 +57,7 @@ body {
 
 		@include mat.all-component-colors($exercise-part3-dark-theme);
 		background: mat.get-theme-color($exercise-part3-dark-theme, background, background);
+		color: mat.get-theme-color($exercise-part3-dark-theme, foreground, text);
+		;
 	}
 }

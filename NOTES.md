@@ -165,3 +165,8 @@ https://material.angular.io/components/button/overview
 - Import the RouterModule into the NotFoundModule
 - Improve NotFoundComponent UI, using MatCard and MatButton components
 - Use the .app-name element on AppComponent template as a home link
+
+## Fix Angular Material Theme fonts
+
+- On 'src\styles.scss' add '@include mat.all-component-typographies();' rule
+- On 'src\styles.scss' add 'color: mat.get-theme-color($exercise-part3-dark-theme, foreground, text);' for the dark theme
