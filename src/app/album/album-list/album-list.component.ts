@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './album-list.component.scss',
   templateUrl: './album-list.component.html',
 })
-export class AlbumListComponent {}
+export class AlbumListComponent {
+  protected titleLabel: string = 'Album list';
+  protected contentLabel: string = 'These are the albums available';
+}

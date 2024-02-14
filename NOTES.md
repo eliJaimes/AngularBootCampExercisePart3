@@ -170,3 +170,13 @@ https://material.angular.io/components/button/overview
 
 - On 'src\styles.scss' add '@include mat.all-component-typographies();' rule
 - On 'src\styles.scss' add 'color: mat.get-theme-color($exercise-part3-dark-theme, foreground, text);' for the dark theme
+
+## Improve UI with MatCard on HomeComponent, AlbumListComponent and UserListComponent
+
+- Import the AngularMaterialModule into the HomeModule
+- Improve UI with MatCard on HomeComponent
+- Import the AngularMaterialModule into the AlbumModule
+- Improve UI with MatCard on AlbumListComponent
+- Import the AngularMaterialModule into the UserModule
+- Improve UI with MatCard on UserListComponent
+- Fix application title, does anyone notice this ☺

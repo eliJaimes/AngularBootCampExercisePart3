@@ -13,7 +13,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  protected appNameLabel: string = 'Tour Of Heroes';
+  protected appNameLabel: string = 'Exercise Part 3';
   protected themeToggleLabel: string = 'Dark theme:';
 
   protected links: Array<LinkT> = [

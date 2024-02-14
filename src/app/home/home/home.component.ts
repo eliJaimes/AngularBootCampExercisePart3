@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  protected titleLabel: string = 'Home';
+  protected contentLabel: string = 'This is our home component';
+}
