@@ -201,3 +201,14 @@ https://fonts.google.com/icons
 - Inject UsersService on UserListComponent
 - Create an usersId$ property on UserListComponent
 - Use a MatList component to render the users
+
+## Add filter functionality to AlbumListComponent
+
+https://material.angular.io/components/input/overview
+
+- Import the MatInputModule into the AngularMaterialModule
+- Import the FormsModule into the AlbumModule
+- Add a filterValue property to the AlbumListComponent
+- Add a filter with a MatFormField component
+- Implement the filter logic
+- Add a ng-template for an empty albums scenario

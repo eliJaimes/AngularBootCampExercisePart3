@@ -7,12 +7,40 @@
   <mat-card-content>
     <p>{{ contentLabel }}</p>
 
-    <mat-list>
-      <div mat-subheader>{{ listTitleLabel }}</div>
-      <mat-list-item *ngFor="let album of albums$ | async">
-        <mat-icon matListItemIcon>album</mat-icon>
-        <div matListItemTitle>{{ album.title | titlecase }}</div>
-      </mat-list-item>
-    </mat-list>
+    <!-- Filter -->
+    <mat-form-field class="example-form-field">
+      <mat-label>{{ filterLabel }}</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="filterValue"
+        (ngModelChange)="filterChangeHandler($event)"
+      />
+      <button
+        *ngIf="filterValue"
+        matSuffix
+        mat-icon-button
+        (click)="filterValue = ''; filterChangeHandler('')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <ng-container *ngIf="filteredAlbums$ | async as filteredAlbums">
+      <!-- List -->
+      <mat-list *ngIf="filteredAlbums.length; else noAlbumsRef">
+        <div mat-subheader>{{ listTitleLabel }}</div>
+        <mat-list-item *ngFor="let filteredAlbum of filteredAlbums">
+          <mat-icon matListItemIcon>album</mat-icon>
+          <div matListItemTitle>{{ filteredAlbum.title | titlecase }}</div>
+        </mat-list-item>
+      </mat-list>
+      <!-- No albums -->
+      <ng-template #noAlbumsRef>
+        <mat-card>
+          <mat-card-content>{{ noAlbumsLabel }}</mat-card-content>
+        </mat-card>
+      </ng-template>
+    </ng-container>
   </mat-card-content>
 </mat-card>

@@ -4,6 +4,7 @@ import { NgModule, Type } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -13,6 +14,7 @@ const AngularMaterialModules: Array<Type<unknown>> = [
   MatButtonModule,
   MatCardModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
   MatSlideToggleModule,
   MatTabsModule,
