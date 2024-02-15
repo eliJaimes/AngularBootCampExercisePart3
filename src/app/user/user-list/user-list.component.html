@@ -6,14 +6,42 @@
   </mat-card-header>
   <mat-card-content>
     <p>{{ contentLabel }}</p>
-  </mat-card-content>
 
-  <mat-list>
-    <div mat-subheader>{{ listTitleLabel }}</div>
-    <mat-list-item *ngFor="let usersId of usersId$ | async">
-      <mat-icon matListItemIcon>account_circle</mat-icon>
-      <div matListItemTitle>{{ usersId.name | titlecase }}</div>
-      <div matListItemLine>{{ usersId.email }}</div>
-    </mat-list-item>
-  </mat-list>
+    <!-- Filter -->
+    <mat-form-field>
+      <mat-label>{{ filterLabel }}</mat-label>
+      <input #filterRef matInput type="text" [(ngModel)]="filterRef.value" />
+      <button
+        #clearFilterRef
+        [ngStyle]="{
+          opacity: filterRef.value ? 1 : 0,
+          pointerEvents: filterRef.value ? 'all' : 'none'
+        }"
+        matSuffix
+        mat-icon-button
+        (click)="filterRef.value ? (filterRef.value = '') : null"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <ng-container *ngIf="filteredUsersId$ | async as filteredUsersId">
+      <!-- List -->
+      <mat-list *ngIf="filteredUsersId.length; else noUsersRef">
+        <div mat-subheader>{{ listTitleLabel }}</div>
+        <mat-list-item *ngFor="let filteredUsersId of filteredUsersId">
+          <mat-icon matListItemIcon>account_circle</mat-icon>
+          <div matListItemTitle>{{ filteredUsersId.name | titlecase }}</div>
+          <div matListItemLine>{{ filteredUsersId.email }}</div>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+  </mat-card-content>
 </mat-card>
+
+<!-- No users -->
+<ng-template #noUsersRef>
+  <mat-card>
+    <mat-card-content>{{ noUsersLabel }}</mat-card-content>
+  </mat-card>
+</ng-template>

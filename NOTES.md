@@ -212,3 +212,11 @@ https://material.angular.io/components/input/overview
 - Add a filter with a MatFormField component
 - Implement the filter logic
 - Add a ng-template for an empty albums scenario
+
+## Add filter functionality to UserListComponent
+
+- Import the FormsModule into the UserModule
+- This time DO NOT include a filterValue property, we will use a template reference
+- Add a filter with a MatFormField component
+- Implement the filter logic
+- Add a ng-template for an empty users scenario
