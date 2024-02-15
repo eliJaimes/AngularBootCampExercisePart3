@@ -26,7 +26,9 @@
       </button>
     </mat-form-field>
 
-    <ng-container *ngIf="filteredAlbums$ | async as filteredAlbums">
+    <ng-container
+      *ngIf="filteredAlbums$ | async as filteredAlbums; else loadingRef"
+    >
       <!-- List -->
       <mat-list *ngIf="filteredAlbums.length; else noAlbumsRef">
         <div mat-subheader>{{ listTitleLabel }}</div>
@@ -42,5 +44,10 @@
         </mat-card>
       </ng-template>
     </ng-container>
+
+    <!-- Loading -->
+    <ng-template #loadingRef>
+      <mat-spinner color="accent" [diameter]="40"></mat-spinner>
+    </ng-template>
   </mat-card-content>
 </mat-card>

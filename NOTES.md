@@ -220,3 +220,10 @@ https://material.angular.io/components/input/overview
 - Add a filter with a MatFormField component
 - Implement the filter logic
 - Add a ng-template for an empty users scenario
+
+## Add a loading indicator
+
+https://material.angular.io/components/progress-spinner/overview
+
+- Import the MatInputModule into the AngularMaterialModule
+- Add a loading template using the MatSpinner component on AlbumListComponent and UserListComponent
