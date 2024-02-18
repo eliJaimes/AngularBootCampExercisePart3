@@ -227,3 +227,18 @@ https://material.angular.io/components/progress-spinner/overview
 
 - Import the MatInputModule into the AngularMaterialModule
 - Add a loading template using the MatSpinner component on AlbumListComponent and UserListComponent
+
+## Add nested routes and navigate from template on AlbumListComponents
+
+- Create AlbumDetailComponent
+
+```shell
+ng generate component album/AlbumDetail --module album --skip-tests --dry-run
+```
+
+- Add a 'children' property on the routes with the 'albums' path
+- Include the new configuration to navigate to a child route, add a navigation parameter
+- Import the RouterModule into the AlbumModule
+- Add the routerLink directive into AlbumListComponent template
+- Add the router-outlet directive into AlbumListComponent template
+- On AlbumDetailComponent get the value of the navigation parameter and render ir on the template

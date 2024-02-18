@@ -32,7 +32,10 @@
       <!-- List -->
       <mat-list *ngIf="filteredAlbums.length; else noAlbumsRef">
         <div mat-subheader>{{ listTitleLabel }}</div>
-        <mat-list-item *ngFor="let filteredAlbum of filteredAlbums">
+        <mat-list-item
+          *ngFor="let filteredAlbum of filteredAlbums"
+          [routerLink]="[filteredAlbum.id]"
+        >
           <mat-icon matListItemIcon>album</mat-icon>
           <div matListItemTitle>{{ filteredAlbum.title | titlecase }}</div>
         </mat-list-item>
@@ -43,6 +46,8 @@
           <mat-card-content>{{ noAlbumsLabel }}</mat-card-content>
         </mat-card>
       </ng-template>
+      <!-- Child route outlet -->
+      <router-outlet></router-outlet>
     </ng-container>
 
     <!-- Loading -->

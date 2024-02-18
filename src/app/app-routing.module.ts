@@ -1,6 +1,7 @@
 /* ••[1]••••••••••••••••••••••••• app-routing.module.ts •••••••••••••••••••••••••••••• */
 
 import { RouterModule, Routes } from '@angular/router';
+import { AlbumDetailComponent } from './album/album-detail/album-detail.component';
 import { AlbumListComponent } from './album/album-list/album-list.component';
 import { HomeComponent } from './home/home/home.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,12 @@ const routes: Routes = [
     path: '',
   },
   {
+    children: [
+      {
+        component: AlbumDetailComponent,
+        path: ':id',
+      },
+    ],
     component: AlbumListComponent,
     path: 'albums',
   },
