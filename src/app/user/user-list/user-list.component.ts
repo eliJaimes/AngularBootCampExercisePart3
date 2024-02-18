@@ -1,5 +1,6 @@
 /* ••[1]••••••••••••••••••••••••• user-list.component.ts •••••••••••••••••••••••••••••• */
 
+import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {
   combineLatest,
@@ -36,7 +37,11 @@ export class UserListComponent implements AfterViewInit {
 
   protected filteredUsersId$!: Observable<Array<UserIdT>>;
 
-  public constructor(private readonly usersService: UsersService) {}
+  public constructor(
+    private readonly usersService: UsersService,
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute
+  ) {}
 
   public ngAfterViewInit(): void {
     const filterEvent$: Observable<InputEvent> = fromEvent<InputEvent>(
@@ -66,5 +71,15 @@ export class UserListComponent implements AfterViewInit {
         );
       })
     );
+  }
+
+  protected selectUser(userId: number): void {
+    /* NOTE: we can pass an absolute path */
+    // this.router.navigate(['users', userId]);
+
+    /* NOTE: or we can use a relative path with the following configuration */
+    this.router.navigate([userId], {
+      relativeTo: this.activatedRoute,
+    });
   }
 }

@@ -241,4 +241,23 @@ ng generate component album/AlbumDetail --module album --skip-tests --dry-run
 - Import the RouterModule into the AlbumModule
 - Add the routerLink directive into AlbumListComponent template
 - Add the router-outlet directive into AlbumListComponent template
-- On AlbumDetailComponent get the value of the navigation parameter and render ir on the template
+- On AlbumDetailComponent get the value of the navigation parameter and render it on the template
+
+## Add nested routes and navigate from template on UserListComponents
+
+- Create UserDetailComponent
+
+```shell
+ng generate component user/UserDetail --module user --skip-tests --dry-run
+```
+
+- Add a 'children' property on the routes with the 'users' path
+- Include the new configuration to navigate to a child route, add a navigation parameter
+- Import the RouterModule into the UserModule
+- Extend UserIdT type to select 'id' property from UserT
+- Update UsersService.usersId$ logic to get the user id
+- Add a click event into UserListComponent template and pass the user id
+- Create a method 'selectUser' on UserListComponent to handle the click event
+- Add logic on selectUser to programmatically navigate to the child route
+- Add the router-outlet directive into AlbumListComponent template
+- On UserDetailComponent get the value of the navigation parameter and render it on the template

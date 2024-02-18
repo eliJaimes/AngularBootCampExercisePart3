@@ -31,12 +31,17 @@
       <!-- List -->
       <mat-list *ngIf="filteredUsersId.length; else noUsersRef">
         <div mat-subheader>{{ listTitleLabel }}</div>
-        <mat-list-item *ngFor="let filteredUsersId of filteredUsersId">
+        <mat-list-item
+          *ngFor="let filteredUsersId of filteredUsersId"
+          (click)="selectUser(filteredUsersId.id)"
+        >
           <mat-icon matListItemIcon>account_circle</mat-icon>
           <div matListItemTitle>{{ filteredUsersId.name | titlecase }}</div>
           <div matListItemLine>{{ filteredUsersId.email }}</div>
         </mat-list-item>
       </mat-list>
+      <!-- Child route outlet -->
+      <router-outlet></router-outlet>
     </ng-container>
   </mat-card-content>
 </mat-card>

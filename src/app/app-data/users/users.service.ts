@@ -22,6 +22,7 @@ export class UsersService {
         users.map(
           (user: UserT): UserIdT => ({
             email: user.email,
+            id: user.id,
             name: user.name,
           })
         )
