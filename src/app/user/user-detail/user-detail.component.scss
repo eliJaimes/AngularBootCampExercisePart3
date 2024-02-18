@@ -1,1 +1,16 @@
 // ••[1]••••••••••••••••••••••••• user-detail.component.scss •••••••••••••••••••••••••••••• //
+.loading {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	position: relative;
+
+	mat-spinner {
+		left: 50%;
+		margin-left: -20px;
+		margin-top: -60px;
+		position: absolute;
+		top: 50%;
+	}
+}

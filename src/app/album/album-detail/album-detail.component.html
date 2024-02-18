@@ -1,6 +1,27 @@
 <!-- ••[1]••••••••••••••••••••••••• album-detail.component.html •••••••••••••••••••••••••••••• -->
 
-<div>albumDetail$</div>
-<pre>
-  {{ albumDetail$ | async | json }}
-</pre>
+<mat-card *ngIf="albumDetail$ | async as albumDetail; else loadingRef">
+  <mat-card-header>
+    <mat-card-title>{{ titleLabel | uppercase }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item><strong>Id:</strong> {{ albumDetail.id }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Title:</strong> {{ albumDetail.title }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>UserId:</strong> {{ albumDetail.userId }}</mat-list-item
+      >
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loadingRef>
+  <div class="loading">
+    <mat-spinner color="accent" [diameter]="40"></mat-spinner>
+    {{ loadingLabel }}
+  </div>
+</ng-template>

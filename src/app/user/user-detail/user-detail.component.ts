@@ -12,6 +12,9 @@ import { UserT } from '../../app-data/users/user.type';
   templateUrl: './user-detail.component.html',
 })
 export class UserDetailComponent implements AfterViewInit {
+  protected readonly titleLabel: string = 'User details';
+  protected readonly loadingLabel: string = 'Loading user...';
+
   protected userDetail$: Observable<UserT> = this.usersService.userDetail$;
 
   public constructor(

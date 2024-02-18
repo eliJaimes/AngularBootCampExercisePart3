@@ -12,6 +12,9 @@ import { Observable } from 'rxjs';
   templateUrl: './album-detail.component.html',
 })
 export class AlbumDetailComponent implements AfterViewInit {
+  protected readonly titleLabel: string = 'Album details';
+  protected readonly loadingLabel: string = 'Loading album...';
+
   protected albumDetail$: Observable<AlbumT> = this.albumsService.albumDetail$;
 
   public constructor(

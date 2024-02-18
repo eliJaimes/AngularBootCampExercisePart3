@@ -304,3 +304,10 @@ https://material.angular.io/cdk/layout/overview
 
 - On AlbumListComponent and UserListComponent wire activate and deactivate events to set routerOutletIsActivated property
 - Extend and improve layout logic using the routerOutletIsActivated property
+
+## Improve AlbumDetailComponent and UserDetailComponent UI
+
+https://material.angular.io/components/divider/overview
+
+- Import the MatDividerModule into the AngularMaterialModule
+- Use MatCard and MatList components to create the UI

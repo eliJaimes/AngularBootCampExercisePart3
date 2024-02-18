@@ -1,6 +1,39 @@
 <!-- ••[1]••••••••••••••••••••••••• user-detail.component.html •••••••••••••••••••••••••••••• -->
 
-<div>userDetail$</div>
-<pre>
-  {{ userDetail$ | async | json }}
-</pre>
+<mat-card *ngIf="userDetail$ | async as userDetail; else loadingRef">
+  <mat-card-header>
+    <mat-card-title>{{ titleLabel | uppercase }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item><strong>Id:</strong> {{ userDetail.id }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Username:</strong> {{ userDetail.username }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Name:</strong> {{ userDetail.name }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Email:</strong> {{ userDetail.email }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Company:</strong> {{ userDetail.company.name }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Website:</strong> {{ userDetail.website }}</mat-list-item
+      >
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loadingRef>
+  <div class="loading">
+    <mat-spinner color="accent" [diameter]="40"></mat-spinner>
+    {{ loadingLabel }}
+  </div>
+</ng-template>
