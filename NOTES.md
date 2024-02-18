@@ -299,3 +299,8 @@ https://material.angular.io/cdk/layout/overview
 - Note: first fix AlbumListComponent so isAtLeastMediumBreakpoint$ observable is configured on ngOnInit life cicle hook, it is a good practice to have simplest constructors
 - Follow the last approach to improve the UI on UserListComponent
 - Note: this time we will not map the BreakpointState, so you got to see this scenario
+
+## Hide AlbumListComponent and UserListComponent when they are not needed
+
+- On AlbumListComponent and UserListComponent wire activate and deactivate events to set routerOutletIsActivated property
+- Extend and improve layout logic using the routerOutletIsActivated property

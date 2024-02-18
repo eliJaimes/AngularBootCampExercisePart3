@@ -43,6 +43,8 @@ export class UserListComponent implements AfterViewInit {
 
   protected isAtLeastMediumBreakpoint$!: Observable<BreakpointState>;
 
+  protected routerOutletIsActivated!: boolean;
+
   public constructor(
     private readonly usersService: UsersService,
     private readonly router: Router,
@@ -91,6 +93,12 @@ export class UserListComponent implements AfterViewInit {
   protected selectUser(userId: number): void {
     this.router.navigate([userId], {
       relativeTo: this.activatedRoute,
+    });
+  }
+
+  protected toggleRouterOutletIsActivated(activate: boolean): void {
+    queueMicrotask((): void => {
+      this.routerOutletIsActivated = activate;
     });
   }
 }

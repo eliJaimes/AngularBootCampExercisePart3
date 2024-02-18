@@ -45,6 +45,8 @@ export class AlbumListComponent implements OnInit {
     matches: boolean;
   }>;
 
+  protected routerOutletIsActivated!: boolean;
+
   public constructor(
     private readonly albumsService: AlbumsService,
     private readonly breakpointObserver: BreakpointObserver
@@ -62,5 +64,11 @@ export class AlbumListComponent implements OnInit {
 
   protected filterChangeHandler(event: string): void {
     this.filterSubject$$.next(event);
+  }
+
+  protected toggleRouterOutletIsActivated(activate: boolean): void {
+    queueMicrotask((): void => {
+      this.routerOutletIsActivated = activate;
+    });
   }
 }

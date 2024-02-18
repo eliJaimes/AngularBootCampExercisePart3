@@ -31,11 +31,31 @@
       *ngIf="filteredUsersId$ | async as filteredUsersId; else loadingRef"
     >
       <mat-grid-list
-        [cols]="isAtLeastMediumBreakpoint.matches ? 3 : 1"
+        [cols]="
+          routerOutletIsActivated
+            ? isAtLeastMediumBreakpoint.matches
+              ? 3
+              : 1
+            : 1
+        "
         gutterSize="16"
-        [rowHeight]="isAtLeastMediumBreakpoint.matches ? 600 : '3:2'"
+        [rowHeight]="
+          routerOutletIsActivated
+            ? isAtLeastMediumBreakpoint.matches
+              ? 600
+              : '3:2'
+            : '1:2'
+        "
       >
-        <mat-grid-tile [colspan]="isAtLeastMediumBreakpoint.matches ? 2 : 1">
+        <mat-grid-tile
+          [colspan]="
+            routerOutletIsActivated
+              ? isAtLeastMediumBreakpoint.matches
+                ? 2
+                : 1
+              : 1
+          "
+        >
           <!-- List -->
           <mat-list *ngIf="filteredUsersId.length; else noUsersRef">
             <div mat-subheader>{{ listTitleLabel }}</div>
@@ -49,9 +69,15 @@
             </mat-list-item>
           </mat-list>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1">
+        <mat-grid-tile
+          [colspan]="routerOutletIsActivated ? 1 : 0"
+          [class.without-border]="!routerOutletIsActivated"
+        >
           <!-- Child route outlet -->
-          <router-outlet></router-outlet>
+          <router-outlet
+            (activate)="toggleRouterOutletIsActivated(true)"
+            (deactivate)="toggleRouterOutletIsActivated(false)"
+          ></router-outlet>
         </mat-grid-tile>
       </mat-grid-list>
     </ng-container>

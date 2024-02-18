@@ -32,11 +32,31 @@
       *ngIf="filteredAlbums$ | async as filteredAlbums; else loadingRef"
     >
       <mat-grid-list
-        [cols]="isAtLeastMediumBreakpoint.matches ? 3 : 1"
+        [cols]="
+          routerOutletIsActivated
+            ? isAtLeastMediumBreakpoint.matches
+              ? 3
+              : 1
+            : 1
+        "
         gutterSize="16"
-        [rowHeight]="isAtLeastMediumBreakpoint.matches ? 600 : '3:2'"
+        [rowHeight]="
+          routerOutletIsActivated
+            ? isAtLeastMediumBreakpoint.matches
+              ? 600
+              : '3:2'
+            : '1:2'
+        "
       >
-        <mat-grid-tile [colspan]="isAtLeastMediumBreakpoint.matches ? 2 : 1">
+        <mat-grid-tile
+          [colspan]="
+            routerOutletIsActivated
+              ? isAtLeastMediumBreakpoint.matches
+                ? 2
+                : 1
+              : 1
+          "
+        >
           <!-- List -->
           <mat-list *ngIf="filteredAlbums.length; else noAlbumsRef">
             <div mat-subheader>{{ listTitleLabel }}</div>
@@ -57,9 +77,15 @@
             <mat-card-content>{{ noAlbumsLabel }}</mat-card-content>
           </mat-card>
         </ng-template>
-        <mat-grid-tile [colspan]="1">
+        <mat-grid-tile
+          [colspan]="routerOutletIsActivated ? 1 : 0"
+          [class.without-border]="!routerOutletIsActivated"
+        >
           <!-- Child route outlet -->
-          <router-outlet></router-outlet>
+          <router-outlet
+            (activate)="toggleRouterOutletIsActivated(true)"
+            (deactivate)="toggleRouterOutletIsActivated(false)"
+          ></router-outlet>
         </mat-grid-tile>
       </mat-grid-list>
     </ng-container>

@@ -3,6 +3,8 @@
 /* stylelint-disable selector-pseudo-element-no-unknown */
 
 /* stylelint-disable max-nesting-depth */
+
+/* stylelint-disable selector-no-qualifying-type */
 mat-form-field {
 	width: 100%;
 }
@@ -20,6 +22,9 @@ mat-grid-tile {
 	overflow: auto;
 	text-align: left;
 
+	&.without-border {
+		border: 0;
+	}
 
 	::ng-deep .mat-grid-tile-content {
 		display: block;
