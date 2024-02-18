@@ -283,3 +283,13 @@ https://material.angular.io/components/grid-list/overview
 - Add a MatGridList component into AlbumListComponent template
 - Add styles on 'src\styles.scss' to change scroll appearance
 - Add styles to 'src\app\album\album-list\album-list.component.scss' to improve MatGridTile component
+
+## Use the BreakpointObserver to change layout on AlbumListComponent based on viewport size
+
+https://material.angular.io/cdk/layout/overview
+
+- Import the LayoutModule into the AngularMaterialModule
+- Inject the breakpointObserver service into AlbumListComponent
+- Create isAtLeastMediumBreakpoint$ observable out of the observe method from the
+  breakpointObserver service
+- Subscribe to the isAtLeastMediumBreakpoint$ observable into the AlbumListComponent template and update MatGridList component logic

@@ -1,5 +1,10 @@
 /* ••[1]••••••••••••••••••••••••• album-list.component.ts •••••••••••••••••••••••••••••• */
 
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 import { combineLatest, map, Observable, startWith, Subject } from 'rxjs';
 import { AlbumsService } from '../../app-data/albums/albums.service';
 import { AlbumT } from '../../app-data/albums/album.type';
@@ -36,7 +41,22 @@ export class AlbumListComponent {
     })
   );
 
-  public constructor(private readonly albumsService: AlbumsService) {}
+  protected readonly isAtLeastMediumBreakpoint$!: Observable<{
+    matches: boolean;
+  }>;
+
+  public constructor(
+    private readonly albumsService: AlbumsService,
+    private readonly breakpointObserver: BreakpointObserver
+  ) {
+    this.isAtLeastMediumBreakpoint$ = this.breakpointObserver
+      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+      .pipe(
+        map((breakpointState: BreakpointState): { matches: boolean } => ({
+          matches: breakpointState.matches,
+        }))
+      );
+  }
 
   protected filterChangeHandler(event: string): void {
     this.filterSubject$$.next(event);
