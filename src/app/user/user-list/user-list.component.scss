@@ -1,4 +1,8 @@
 // ••[1]••••••••••••••••••••••••• user-list.component.scss •••••••••••••••••••••••••••••• //
+
+/* stylelint-disable selector-pseudo-element-no-unknown */
+
+/* stylelint-disable max-nesting-depth */
 mat-form-field {
 	width: 100%;
 }
@@ -9,4 +13,20 @@ mat-spinner {
 	margin-top: -20px;
 	position: absolute;
 	top: 50vh;
+}
+
+mat-grid-tile {
+	border: 2px solid var(--divider);
+	overflow: auto;
+	text-align: left;
+
+
+	::ng-deep .mat-grid-tile-content {
+		display: block;
+		padding: 1em;
+
+		mat-list {
+			padding-bottom: 3em;
+		}
+	}
 }

@@ -6,16 +6,16 @@ import {
   BreakpointState,
 } from '@angular/cdk/layout';
 import { combineLatest, map, Observable, startWith, Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { AlbumsService } from '../../app-data/albums/albums.service';
 import { AlbumT } from '../../app-data/albums/album.type';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-album-list',
   styleUrl: './album-list.component.scss',
   templateUrl: './album-list.component.html',
 })
-export class AlbumListComponent {
+export class AlbumListComponent implements OnInit {
   protected readonly titleLabel: string = 'Album list';
   protected readonly contentLabel: string = 'These are the albums available';
   protected readonly listTitleLabel: string = 'Albums';
@@ -41,14 +41,16 @@ export class AlbumListComponent {
     })
   );
 
-  protected readonly isAtLeastMediumBreakpoint$!: Observable<{
+  protected isAtLeastMediumBreakpoint$!: Observable<{
     matches: boolean;
   }>;
 
   public constructor(
     private readonly albumsService: AlbumsService,
     private readonly breakpointObserver: BreakpointObserver
-  ) {
+  ) {}
+
+  public ngOnInit(): void {
     this.isAtLeastMediumBreakpoint$ = this.breakpointObserver
       .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
       .pipe(

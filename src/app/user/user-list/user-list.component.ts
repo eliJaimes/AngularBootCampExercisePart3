@@ -3,6 +3,11 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
+import {
   combineLatest,
   fromEvent,
   map,
@@ -12,7 +17,6 @@ import {
 } from 'rxjs';
 import { UserIdT } from '../../app-data/users/user.type';
 import { UsersService } from '../../app-data/users/users.service';
-
 @Component({
   selector: 'app-user-list',
   styleUrl: './user-list.component.scss',
@@ -37,11 +41,22 @@ export class UserListComponent implements AfterViewInit {
 
   protected filteredUsersId$!: Observable<Array<UserIdT>>;
 
+  protected isAtLeastMediumBreakpoint$!: Observable<BreakpointState>;
+
   public constructor(
     private readonly usersService: UsersService,
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly breakpointObserver: BreakpointObserver
   ) {}
+
+  public ngOnInit(): void {
+    this.isAtLeastMediumBreakpoint$ = this.breakpointObserver.observe([
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ]);
+  }
 
   public ngAfterViewInit(): void {
     const filterEvent$: Observable<InputEvent> = fromEvent<InputEvent>(

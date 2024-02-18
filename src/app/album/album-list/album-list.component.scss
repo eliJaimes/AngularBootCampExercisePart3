@@ -20,8 +20,6 @@ mat-grid-tile {
 	overflow: auto;
 	text-align: left;
 
-	/* NOTE: 'ng-deep' is considered a bad practice, however sometimes is the only
-  way to pierce into components Shadow DOM */
 
 	::ng-deep .mat-grid-tile-content {
 		display: block;

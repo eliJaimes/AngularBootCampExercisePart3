@@ -1,6 +1,8 @@
 <!-- ••[1]••••••••••••••••••••••••• user-list.component.html •••••••••••••••••••••••••••••• -->
 
-<mat-card>
+<mat-card
+  *ngIf="isAtLeastMediumBreakpoint$ | async as isAtLeastMediumBreakpoint"
+>
   <mat-card-header>
     <mat-card-title>{{ titleLabel | uppercase }}</mat-card-title>
   </mat-card-header>
@@ -28,20 +30,30 @@
     <ng-container
       *ngIf="filteredUsersId$ | async as filteredUsersId; else loadingRef"
     >
-      <!-- List -->
-      <mat-list *ngIf="filteredUsersId.length; else noUsersRef">
-        <div mat-subheader>{{ listTitleLabel }}</div>
-        <mat-list-item
-          *ngFor="let filteredUsersId of filteredUsersId"
-          (click)="selectUser(filteredUsersId.id)"
-        >
-          <mat-icon matListItemIcon>account_circle</mat-icon>
-          <div matListItemTitle>{{ filteredUsersId.name | titlecase }}</div>
-          <div matListItemLine>{{ filteredUsersId.email }}</div>
-        </mat-list-item>
-      </mat-list>
-      <!-- Child route outlet -->
-      <router-outlet></router-outlet>
+      <mat-grid-list
+        [cols]="isAtLeastMediumBreakpoint.matches ? 3 : 1"
+        gutterSize="16"
+        [rowHeight]="isAtLeastMediumBreakpoint.matches ? 600 : '3:2'"
+      >
+        <mat-grid-tile [colspan]="isAtLeastMediumBreakpoint.matches ? 2 : 1">
+          <!-- List -->
+          <mat-list *ngIf="filteredUsersId.length; else noUsersRef">
+            <div mat-subheader>{{ listTitleLabel }}</div>
+            <mat-list-item
+              *ngFor="let filteredUsersId of filteredUsersId"
+              (click)="selectUser(filteredUsersId.id)"
+            >
+              <mat-icon matListItemIcon>account_circle</mat-icon>
+              <div matListItemTitle>{{ filteredUsersId.name | titlecase }}</div>
+              <div matListItemLine>{{ filteredUsersId.email }}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+          <!-- Child route outlet -->
+          <router-outlet></router-outlet>
+        </mat-grid-tile>
+      </mat-grid-list>
     </ng-container>
   </mat-card-content>
 </mat-card>

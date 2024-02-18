@@ -293,3 +293,9 @@ https://material.angular.io/cdk/layout/overview
 - Create isAtLeastMediumBreakpoint$ observable out of the observe method from the
   breakpointObserver service
 - Subscribe to the isAtLeastMediumBreakpoint$ observable into the AlbumListComponent template and update MatGridList component logic
+
+## Improve layout on UserListComponent and use the BreakpointObserver to change layout based on viewport size
+
+- Note: first fix AlbumListComponent so isAtLeastMediumBreakpoint$ observable is configured on ngOnInit life cicle hook, it is a good practice to have simplest constructors
+- Follow the last approach to improve the UI on UserListComponent
+- Note: this time we will not map the BreakpointState, so you got to see this scenario
