@@ -311,3 +311,12 @@ https://material.angular.io/components/divider/overview
 
 - Import the MatDividerModule into the AngularMaterialModule
 - Use MatCard and MatList components to create the UI
+
+## Create an AuthenticateSystemUser service to fake user authentication and authorization
+
+- Create a 'src\app\entities\systemUserType.type.ts' file with an enum definition SystemUserTypeE and a SystemUserTypeT type definition
+- Create authenticateUserService
+
+```shell
+ng generate service services/authenticateSystemUser --skip-tests --dry-run
+```
