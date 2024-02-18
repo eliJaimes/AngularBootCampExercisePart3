@@ -261,3 +261,12 @@ ng generate component user/UserDetail --module user --skip-tests --dry-run
 - Add logic on selectUser to programmatically navigate to the child route
 - Add the router-outlet directive into AlbumListComponent template
 - On UserDetailComponent get the value of the navigation parameter and render it on the template
+
+## Extend AlbumDetailComponent UI to retrieve album details
+
+- Create reactive logic to get the album details. Here we will use a reactive approach to react to actions
+- Create a albumSelectedSubject$$ Subject that allow to reactively emit a selected album Id
+- Create an albumSelected$ observable from albumSelectedSubject$$ that emits albums ids over time
+- Create a selectAlbum method that expose functionality from the AlbumsService to programmatically select an album
+- Create a albumDetail$ observable that will react to emissions of albums$ and albumSelected$ to retrieve the desired album
+- Use the albumSelected$ observable on AlbumDetailComponent to get the data
