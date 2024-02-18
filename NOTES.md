@@ -270,3 +270,7 @@ ng generate component user/UserDetail --module user --skip-tests --dry-run
 - Create a selectAlbum method that expose functionality from the AlbumsService to programmatically select an album
 - Create a albumDetail$ observable that will react to emissions of albums$ and albumSelected$ to retrieve the desired album
 - Use the albumSelected$ observable on AlbumDetailComponent to get the data
+
+## Extend UserDetailComponent UI to retrieve user details
+
+- Follow the last approach to retrieve and render user details

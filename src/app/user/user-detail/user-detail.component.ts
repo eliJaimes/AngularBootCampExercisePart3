@@ -1,27 +1,27 @@
 /* ••[1]••••••••••••••••••••••••• user-detail.component.ts •••••••••••••••••••••••••••••• */
 
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UsersService } from '../../app-data/users/users.service';
+import { UserT } from '../../app-data/users/user.type';
 
 @Component({
   selector: 'app-user-detail',
   styleUrl: './user-detail.component.scss',
   templateUrl: './user-detail.component.html',
 })
-export class UserDetailComponent implements OnInit {
-  protected userId!: number;
+export class UserDetailComponent implements AfterViewInit {
+  protected userDetail$: Observable<UserT> = this.usersService.userDetail$;
 
-  public constructor(private readonly activatedRoute: ActivatedRoute) {}
+  public constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly usersService: UsersService
+  ) {}
 
-  public ngOnInit(): void {
-    /* NOTE: this snapshot will only be updated when the component gets created */
-    this.userId = +this.activatedRoute.snapshot.params['id'];
-    console.log('this.userId by snapshot: %O', this.userId);
-
-    /* NOTE: this will happen every time the router react to subsequent changes */
+  public ngAfterViewInit(): void {
     this.activatedRoute.params.subscribe((params: Params): void => {
-      this.userId = Number(params['id']);
-      console.log('this.userId by subscription: %O', this.userId);
+      this.usersService.selectUser(Number(params['id']));
     });
   }
 }
