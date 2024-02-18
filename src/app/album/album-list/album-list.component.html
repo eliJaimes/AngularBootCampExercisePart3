@@ -29,25 +29,33 @@
     <ng-container
       *ngIf="filteredAlbums$ | async as filteredAlbums; else loadingRef"
     >
-      <!-- List -->
-      <mat-list *ngIf="filteredAlbums.length; else noAlbumsRef">
-        <div mat-subheader>{{ listTitleLabel }}</div>
-        <mat-list-item
-          *ngFor="let filteredAlbum of filteredAlbums"
-          [routerLink]="[filteredAlbum.id]"
-        >
-          <mat-icon matListItemIcon>album</mat-icon>
-          <div matListItemTitle>{{ filteredAlbum.title | titlecase }}</div>
-        </mat-list-item>
-      </mat-list>
-      <!-- No albums -->
-      <ng-template #noAlbumsRef>
-        <mat-card>
-          <mat-card-content>{{ noAlbumsLabel }}</mat-card-content>
-        </mat-card>
-      </ng-template>
-      <!-- Child route outlet -->
-      <router-outlet></router-outlet>
+      <mat-grid-list cols="3" gutterSize="16">
+        <mat-grid-tile [colspan]="2">
+          <!-- List -->
+          <mat-list *ngIf="filteredAlbums.length; else noAlbumsRef">
+            <div mat-subheader>{{ listTitleLabel }}</div>
+            <mat-list-item
+              *ngFor="let filteredAlbum of filteredAlbums"
+              [routerLink]="[filteredAlbum.id]"
+            >
+              <mat-icon matListItemIcon>album</mat-icon>
+              <div matListItemTitle>
+                {{ filteredAlbum.title | titlecase }}
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <!-- No albums -->
+        <ng-template #noAlbumsRef>
+          <mat-card>
+            <mat-card-content>{{ noAlbumsLabel }}</mat-card-content>
+          </mat-card>
+        </ng-template>
+        <mat-grid-tile>
+          <!-- Child route outlet -->
+          <router-outlet></router-outlet>
+        </mat-grid-tile>
+      </mat-grid-list>
     </ng-container>
 
     <!-- Loading -->

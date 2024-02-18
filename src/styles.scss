@@ -6,6 +6,8 @@
 // For more information: https://material.angular.io/guide/theming
 
 @use '@angular/material'as mat;
+
+@use "sass:color";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -49,15 +51,52 @@ body {
 }
 
 body {
+	--divider: #{mat.get-theme-color($exercise-part3-light-theme, foreground, divider)};
+	--scrollbar-button: #{mat.get-theme-color($exercise-part3-light-theme, primary, default)};
+	--scrollbar-track-piece : #{rgba(mat.get-theme-color($exercise-part3-light-theme, primary, default), .20)};
+	--scrollbar-thumb : #{rgba(mat.get-theme-color($exercise-part3-light-theme, accent, default), .30)};
 	background: mat.get-theme-color($exercise-part3-light-theme, background, background);
 	font-family: Roboto, "Helvetica Neue", sans-serif;
 	margin: 0;
 
+
+
+	// ••[2]•••••••••• Scrollbar •••••••••••••••//
+	::-webkit-scrollbar,
+	&::-webkit-scrollbar {
+		height: 6px;
+		width: 6px;
+	}
+
+	// Button up, button down
+	::-webkit-scrollbar-button,
+	&::-webkit-scrollbar-button {
+		background: var(--scrollbar-button);
+		cursor: pointer;
+	}
+
+	// All the track
+	::-webkit-scrollbar-track-piece,
+	&::-webkit-scrollbar-track-piece {
+		background: var(--scrollbar-track-piece);
+	}
+
+	// Indicator
+	::-webkit-scrollbar-thumb,
+	&::-webkit-scrollbar-thumb {
+		background: var(--scrollbar-thumb);
+	}
+
+
 	&.dark {
+		--divider: #{mat.get-theme-color($exercise-part3-dark-theme, foreground, divider)};
+		--scrollbar-button: #{mat.get-theme-color($exercise-part3-dark-theme, primary, default)};
+		--scrollbar-track-piece : #{rgba(mat.get-theme-color($exercise-part3-dark-theme, primary, default), .20)};
+		--scrollbar-thumb : #{rgba(mat.get-theme-color($exercise-part3-dark-theme, accent, default), .30)};
 
 		@include mat.all-component-colors($exercise-part3-dark-theme);
 		background: mat.get-theme-color($exercise-part3-dark-theme, background, background);
 		color: mat.get-theme-color($exercise-part3-dark-theme, foreground, text);
-		;
 	}
+	;
 }

@@ -274,3 +274,12 @@ ng generate component user/UserDetail --module user --skip-tests --dry-run
 ## Extend UserDetailComponent UI to retrieve user details
 
 - Follow the last approach to retrieve and render user details
+
+## Improve layout on AlbumListComponent and UserListComponent
+
+https://material.angular.io/components/grid-list/overview
+
+- Import the MatGridListModule into the AngularMaterialModule
+- Add a MatGridList component into AlbumListComponent template
+- Add styles on 'src\styles.scss' to change scroll appearance
+- Add styles to 'src\app\album\album-list\album-list.component.scss' to improve MatGridTile component

@@ -74,10 +74,6 @@ export class UserListComponent implements AfterViewInit {
   }
 
   protected selectUser(userId: number): void {
-    /* NOTE: we can pass an absolute path */
-    // this.router.navigate(['users', userId]);
-
-    /* NOTE: or we can use a relative path with the following configuration */
     this.router.navigate([userId], {
       relativeTo: this.activatedRoute,
     });
