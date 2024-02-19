@@ -2,9 +2,17 @@
 
 /* stylelint-disable selector-no-qualifying-type */
 .app-name {
+	align-items: baseline;
 	cursor: pointer;
 	display: flex;
 	flex: 1 1 auto;
+
+	.logged-status {
+		color: var(--primary);
+		font-size: 0.7em;
+		margin-left: 1em;
+		opacity: 0.7;
+	}
 }
 
 nav[mat-tab-nav-bar] {

@@ -1,8 +1,8 @@
 /* ••[1]••••••••••••••••••••••••• systemUserType.type.ts •••••••••••••••••••••••••••••• */
 
 export enum SystemUserTypeE {
-  adminUser = 'adminUser',
-  regularUser = 'regularUser',
+  adminUser = 'Admin',
+  regularUser = 'Regular',
 }
 
 export type SystemUserTypeT = SystemUserTypeE | null;

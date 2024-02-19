@@ -1,11 +1,14 @@
 /* ••[1]••••••••••••••••••••••••• app.component.ts •••••••••••••••••••••••••••••• */
+
 import { ActivationStart, Router } from '@angular/router';
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { filter, Observable } from 'rxjs';
+import { AuthenticateSystemUserService } from './services/authenticate-system-user.service';
 import { DOCUMENT } from '@angular/common';
 import { LinkT } from './entities/link.type';
 import { map } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { SystemUserTypeE } from './entities/systemUserType.type';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,18 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  protected systemUserTypeE: typeof SystemUserTypeE = SystemUserTypeE;
+
   protected appNameLabel: string = 'Exercise Part 3';
+
+  protected notLoggedLabel: string = 'not logged';
+
+  protected loggedAsRegularUserLabel: string =
+    'Logged as <strong>REGULAR</strong> user';
+
+  protected loggedAsAdminUserLabel: string =
+    'Logged as <strong>ADMIN</strong> user';
+
   protected themeToggleLabel: string = 'Dark theme:';
 
   protected links: Array<LinkT> = [
@@ -43,7 +57,8 @@ export class AppComponent {
   public constructor(
     @Inject(DOCUMENT) private readonly document: Document,
     private readonly renderer2: Renderer2,
-    private readonly router: Router
+    private readonly router: Router,
+    protected readonly authenticateSystemUserService: AuthenticateSystemUserService
   ) {}
 
   protected themeChangeHandler(event: MatSlideToggleChange): void {

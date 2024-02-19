@@ -6,5 +6,40 @@
   </mat-card-header>
   <mat-card-content>
     <p>{{ contentLabel }}</p>
+
+    <div class="log-buttons">
+      <ng-container
+        *ngIf="
+          authenticateSystemUserService.loggedAs$ | async as loggedAs;
+          else notLogged
+        "
+      >
+        <button
+          mat-stroked-button
+          color="accent"
+          (click)="authenticateSystemUserService.logOut()"
+        >
+          {{ logOutLabel }}
+        </button>
+      </ng-container>
+      <ng-template #notLogged>
+        <button
+          mat-stroked-button
+          color="accent"
+          [innerHTML]="logAsRegularUserLabel | sanitizeHtml"
+          (click)="
+            authenticateSystemUserService.logInAs(systemUserTypeE.regularUser)
+          "
+        ></button>
+        <button
+          mat-stroked-button
+          color="accent"
+          [innerHTML]="logAsAdminUserLabel | sanitizeHtml"
+          (click)="
+            authenticateSystemUserService.logInAs(systemUserTypeE.adminUser)
+          "
+        ></button>
+      </ng-template>
+    </div>
   </mat-card-content>
 </mat-card>

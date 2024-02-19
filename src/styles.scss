@@ -52,7 +52,8 @@ body {
 
 body {
 	--divider: #{mat.get-theme-color($exercise-part3-light-theme, foreground, divider)};
-	--scrollbar-button: #{mat.get-theme-color($exercise-part3-light-theme, primary, default)};
+	--primary: #{mat.get-theme-color($exercise-part3-light-theme, primary, default)};
+	--scrollbar-button: var(--primary);
 	--scrollbar-track-piece : #{rgba(mat.get-theme-color($exercise-part3-light-theme, primary, default), .20)};
 	--scrollbar-thumb : #{rgba(mat.get-theme-color($exercise-part3-light-theme, accent, default), .30)};
 	background: mat.get-theme-color($exercise-part3-light-theme, background, background);
@@ -90,7 +91,8 @@ body {
 
 	&.dark {
 		--divider: #{mat.get-theme-color($exercise-part3-dark-theme, foreground, divider)};
-		--scrollbar-button: #{mat.get-theme-color($exercise-part3-dark-theme, primary, default)};
+		--primary: #{mat.get-theme-color($exercise-part3-dark-theme, primary, default)};
+		--scrollbar-button: var(--primary);
 		--scrollbar-track-piece : #{rgba(mat.get-theme-color($exercise-part3-dark-theme, primary, default), .20)};
 		--scrollbar-thumb : #{rgba(mat.get-theme-color($exercise-part3-dark-theme, accent, default), .30)};
 

@@ -320,3 +320,22 @@ https://material.angular.io/components/divider/overview
 ```shell
 ng generate service services/authenticateSystemUser --skip-tests --dry-run
 ```
+
+## Use the AuthenticateSystemUser service on HomeComponent to logIn, logOut a system user
+
+- Inject the AuthenticateSystemUser service on HomeComponent
+- Add some login buttons on HomeComponent template
+- Inject the AuthenticateSystemUser service on AppComponent
+- Add some UI AppComponent to know the system log in status
+- Note: As a good practice lets sanitize injected HTML
+
+- Create a sanitizeHtml pipe
+
+```shell
+ng generate pipe pipes/sanitizeHtml --skip-import --dry-run
+```
+
+- Add code to 'src\app\pipes\sanitize-html.pipe.ts'
+- Import SanitizeHtmlPipe to HomeModule declarations and export it to make it available to all modules that import HomeModule (AppModule)
+- Use sanitizeHtml pipe on AppComponent template
+- Use sanitizeHtml pipe on HomeComponent template

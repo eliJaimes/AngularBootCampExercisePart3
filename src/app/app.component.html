@@ -1,7 +1,32 @@
 <!-- ••[1]••••••••••••••••••••••••• app.component.html •••••••••••••••••••••••••••••• -->
 
 <mat-toolbar>
-  <span class="app-name" routerLink="/">{{ appNameLabel }}</span>
+  <span class="app-name" routerLink="/"
+    >{{ appNameLabel }},
+
+    <div class="logged-status">
+      <ng-container
+        *ngIf="
+          authenticateSystemUserService.loggedAs$ | async as loggedAs;
+          else notLogged
+        "
+      >
+        <div [ngSwitch]="loggedAs">
+          <div
+            *ngSwitchCase="systemUserTypeE.regularUser"
+            [innerHTML]="loggedAsRegularUserLabel | sanitizeHtml"
+          ></div>
+          <div
+            *ngSwitchCase="systemUserTypeE.adminUser"
+            [innerHTML]="loggedAsAdminUserLabel | sanitizeHtml"
+          ></div>
+        </div>
+      </ng-container>
+      <ng-template #notLogged>
+        <div [innerHTML]="notLoggedLabel | sanitizeHtml"></div>
+      </ng-template>
+    </div>
+  </span>
   <mat-slide-toggle
     checked
     hideIcon
