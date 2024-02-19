@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlbumDetailComponent } from './album/album-detail/album-detail.component';
 import { AlbumListComponent } from './album/album-list/album-list.component';
 import { HomeComponent } from './home/home/home.component';
+import { isLoggedFunctionalGuard } from './guards/is-logged-functional.guard';
 import { IsLoggedGuard } from './guards/is-logged.guard';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
     path: 'albums',
   },
   {
+    canActivate: [isLoggedFunctionalGuard],
     children: [
       {
         component: UserDetailComponent,

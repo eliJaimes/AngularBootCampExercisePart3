@@ -367,3 +367,12 @@ ng generate guard guards/isLogged --skip-tests --functional false --dry-run
 - Add some helper navigation buttons on HomeComponent
 - We need to configure which user types are valid ones for this route, we can use the 'data' property to do so
 - Inject the AuthenticateSystemUserService into the IsLoggedGuard guard
+
+## Generate a IsLogged guard to protect our users route (NEW WAY)
+
+```shell
+ng generate guard guards/isLoggedFunctional --skip-tests --dry-run
+> ? Which type of guard would you like to create? CanActivate
+```
+
+- We might want to create a high order function where we can configure the user types for the route
