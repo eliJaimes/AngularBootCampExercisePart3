@@ -1,6 +1,5 @@
 /* ••[1]••••••••••••••••••••••••• app.module.ts •••••••••••••••••••••••••••••• */
 
-import { AlbumModule } from './album/album.module';
 import { AngularMaterialModule } from './angular-material.module';
 import { AppComponent } from './app.component';
 import { AppData } from './app-data/app-data';
@@ -18,7 +17,6 @@ import { UserModule } from './user/user.module';
   bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [
-    AlbumModule,
     AngularMaterialModule,
     AppRoutingModule,
     BrowserModule,

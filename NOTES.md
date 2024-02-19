@@ -380,3 +380,21 @@ ng generate guard guards/isLoggedFunctional --skip-tests --dry-run
 ## Modify the isLoggedFunctional guard to be a high order function
 
 - A high order function is a function that returns a function, in our case we want this because we want to configure valid user types for the route
+
+## Change the router to load lazy load AlbumModule instead eager load
+
+- Delete 'AlbumModule' from 'AppModule' imports array, we will not load the module eagerly
+- On 'src\app\app-routing.module.ts' for 'albums' path replace 'component' property to 'loadChildren' property importing 'AlbumModule' instead of 'AlbumListComponent'. 'loadChildren' will configure the lazy loading behavior
+- An error will appear until you do not comment the 'children' property
+- Once commented the application will run again but '/albums' route will not display anything
+- We need to create a router configuration for the 'AlbumModule'
+
+- We will create a 'Album2Module' since we already have 'Album2Module', we will delete the 'album2.module.ts' file and rename 'album2-routing.module.ts' to 'album-routing.module.ts'
+
+```shell
+ng generate module album/album2 --flat true --routing true --dry-run
+```
+
+- Rename 'Album2RoutingModule' class to 'AlbumRoutingModule'
+- Import 'AlbumRoutingModule' into 'AlbumModule' imports array
+- On 'src\app\Album\album-routing.module.ts' we need to declare the module routes, notice that now we use the 'RouterModule.forChild' configuration method instead of 'RouterModule.forRoot' since we are configuring a feature module

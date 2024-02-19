@@ -1,8 +1,9 @@
 /* ••[1]••••••••••••••••••••••••• app-routing.module.ts •••••••••••••••••••••••••••••• */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { RouterModule, Routes } from '@angular/router';
-import { AlbumDetailComponent } from './album/album-detail/album-detail.component';
-import { AlbumListComponent } from './album/album-list/album-list.component';
+import { AlbumModule } from './album/album.module';
 import { HomeComponent } from './home/home/home.component';
 import { isLoggedFunctionalGuard } from './guards/is-logged-functional.guard';
 import { IsLoggedGuard } from './guards/is-logged.guard';
@@ -19,16 +20,13 @@ const routes: Routes = [
   },
   {
     canActivate: [IsLoggedGuard],
-    children: [
-      {
-        component: AlbumDetailComponent,
-        path: ':id',
-      },
-    ],
-    component: AlbumListComponent,
     data: {
       canActivate: [SystemUserTypeE.regularUser, SystemUserTypeE.adminUser],
     },
+    loadChildren: (): Promise<typeof AlbumModule> =>
+      import('./album/album.module').then(
+        (m: any): typeof AlbumModule => m.AlbumModule
+      ),
     path: 'albums',
   },
   {
