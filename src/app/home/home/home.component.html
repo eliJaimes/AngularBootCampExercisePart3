@@ -41,5 +41,32 @@
         ></button>
       </ng-template>
     </div>
+    <mat-divider></mat-divider>
+    <div class="navigation-buttons">
+      <button
+        mat-stroked-button
+        color="primary"
+        [innerHTML]="goToAlbumsLabel | sanitizeHtml"
+        [routerLink]="['albums']"
+      ></button>
+      <button
+        mat-stroked-button
+        color="primary"
+        [innerHTML]="goToUsersLabel | sanitizeHtml"
+        [routerLink]="['users']"
+      ></button>
+      <button
+        mat-stroked-button
+        color="primary"
+        [innerHTML]="goToAlbumDetail1Label | sanitizeHtml"
+        [routerLink]="['albums', '1']"
+      ></button>
+      <button
+        mat-stroked-button
+        color="primary"
+        [innerHTML]="goToUserDetail1Label | sanitizeHtml"
+        [routerLink]="['users', '1']"
+      ></button>
+    </div>
   </mat-card-content>
 </mat-card>

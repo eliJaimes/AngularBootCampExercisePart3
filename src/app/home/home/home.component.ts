@@ -23,6 +23,18 @@ export class HomeComponent {
   protected logAsAdminUserLabel: string =
     'Log In as <strong style="padding: 0 .5em">ADMIN</strong> user';
 
+  protected goToAlbumsLabel: string =
+    'Go to <strong style="padding: 0 .5em">ALBUMS</strong>';
+
+  protected goToUsersLabel: string =
+    'Go to <strong style="padding: 0 .5em">USERS</strong>';
+
+  protected goToAlbumDetail1Label: string =
+    'Go to <strong style="padding: 0 .5em">ALBUM DETAIL 1</strong>';
+
+  protected goToUserDetail1Label: string =
+    'Go to <strong style="padding: 0 .5em">USER DETAIL 1</strong>';
+
   public constructor(
     protected readonly authenticateSystemUserService: AuthenticateSystemUserService
   ) {}

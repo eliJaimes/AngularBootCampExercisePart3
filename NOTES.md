@@ -353,3 +353,17 @@ ng generate pipe pipes/sanitizeHtml --skip-import --dry-run
   - http://localhost:4200/users/1
 
 - We will solve this in next commits
+
+## Generate a IsLogged guard to protect our albums route (OLD WAY)
+
+https://angular.io/cli/generate#guard
+
+```shell
+ng generate guard guards/isLogged --skip-tests --functional false --dry-run
+> ? Which type of guard would you like to create? CanActivate
+```
+
+- Import the RouterModule into the HomeModule
+- Add some helper navigation buttons on HomeComponent
+- We need to configure which user types are valid ones for this route, we can use the 'data' property to do so
+- Inject the AuthenticateSystemUserService into the IsLoggedGuard guard
