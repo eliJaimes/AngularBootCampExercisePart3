@@ -32,7 +32,7 @@ const routes: Routes = [
     path: 'albums',
   },
   {
-    canActivate: [isLoggedFunctionalGuard],
+    canActivate: [isLoggedFunctionalGuard([SystemUserTypeE.adminUser])],
     children: [
       {
         component: UserDetailComponent,

@@ -376,3 +376,7 @@ ng generate guard guards/isLoggedFunctional --skip-tests --dry-run
 ```
 
 - We might want to create a high order function where we can configure the user types for the route
+
+## Modify the isLoggedFunctional guard to be a high order function
+
+- A high order function is a function that returns a function, in our case we want this because we want to configure valid user types for the route
