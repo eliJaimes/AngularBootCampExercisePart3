@@ -398,3 +398,11 @@ ng generate module album/album2 --flat true --routing true --dry-run
 - Rename 'Album2RoutingModule' class to 'AlbumRoutingModule'
 - Import 'AlbumRoutingModule' into 'AlbumModule' imports array
 - On 'src\app\Album\album-routing.module.ts' we need to declare the module routes, notice that now we use the 'RouterModule.forChild' configuration method instead of 'RouterModule.forRoot' since we are configuring a feature module
+
+## Change the router to load lazy load UserModule instead eager load
+
+- Follow previous recipe to lazily load UserModule
+
+```shell
+ng generate module user/user2 --flat true --routing true --dry-run
+```

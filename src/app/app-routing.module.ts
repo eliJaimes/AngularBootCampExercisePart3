@@ -10,8 +10,7 @@ import { IsLoggedGuard } from './guards/is-logged.guard';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { SystemUserTypeE } from './entities/systemUserType.type';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
-import { UserListComponent } from './user/user-list/user-list.component';
+import { UserModule } from './user/user.module';
 
 const routes: Routes = [
   {
@@ -31,13 +30,10 @@ const routes: Routes = [
   },
   {
     canActivate: [isLoggedFunctionalGuard([SystemUserTypeE.adminUser])],
-    children: [
-      {
-        component: UserDetailComponent,
-        path: ':id',
-      },
-    ],
-    component: UserListComponent,
+    loadChildren: (): Promise<typeof UserModule> =>
+      import('./user/user.module').then(
+        (m: any): typeof UserModule => m.UserModule
+      ),
     path: 'users',
   },
   {

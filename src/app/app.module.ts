@@ -11,7 +11,6 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { NgModule } from '@angular/core';
 import { NotFoundModule } from './not-found/not-found.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { UserModule } from './user/user.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -24,7 +23,6 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
     NotFoundModule,
-    UserModule,
   ],
   providers: [provideAnimationsAsync()],
 })
