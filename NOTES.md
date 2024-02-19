@@ -339,3 +339,17 @@ ng generate pipe pipes/sanitizeHtml --skip-import --dry-run
 - Import SanitizeHtmlPipe to HomeModule declarations and export it to make it available to all modules that import HomeModule (AppModule)
 - Use sanitizeHtml pipe on AppComponent template
 - Use sanitizeHtml pipe on HomeComponent template
+
+## Use the AuthenticateSystemUser service on AppComponent to hide tabs depending on the system User type
+
+- Albums, will be available for regular and admin users
+- Users, will be available only for admin users
+- On 'src\app\entities\link.type.ts' add a visible property
+- Note: notice that even when we hide the tabs albums and user are still accesible if we use the URLs
+
+  - http://localhost:4200/albums
+  - http://localhost:4200/albums/1
+  - http://localhost:4200/users
+  - http://localhost:4200/users/1
+
+- We will solve this in next commits

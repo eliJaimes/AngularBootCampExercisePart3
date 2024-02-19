@@ -3,12 +3,15 @@
 import { ActivationStart, Router } from '@angular/router';
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { filter, Observable } from 'rxjs';
+import {
+  SystemUserTypeE,
+  SystemUserTypeT,
+} from './entities/systemUserType.type';
 import { AuthenticateSystemUserService } from './services/authenticate-system-user.service';
 import { DOCUMENT } from '@angular/common';
 import { LinkT } from './entities/link.type';
 import { map } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { SystemUserTypeE } from './entities/systemUserType.type';
 
 @Component({
   selector: 'app-root',
@@ -35,14 +38,21 @@ export class AppComponent {
       exact: true,
       label: 'Home',
       path: '',
+      visible: [
+        'SHOW_HOME',
+        SystemUserTypeE.regularUser,
+        SystemUserTypeE.adminUser,
+      ],
     },
     {
       label: 'Albums',
       path: 'albums',
+      visible: [SystemUserTypeE.regularUser, SystemUserTypeE.adminUser],
     },
     {
       label: 'Users',
       path: 'users',
+      visible: [SystemUserTypeE.adminUser],
     },
   ];
 
@@ -53,6 +63,13 @@ export class AppComponent {
         !(data as ActivationStart).snapshot.data['notFound']
     )
   );
+
+  protected loggedAs$: Observable<SystemUserTypeE | 'SHOW_HOME'> =
+    this.authenticateSystemUserService.loggedAs$.pipe(
+      map((value: SystemUserTypeT): SystemUserTypeE | 'SHOW_HOME' => {
+        return value || 'SHOW_HOME';
+      })
+    );
 
   public constructor(
     @Inject(DOCUMENT) private readonly document: Document,

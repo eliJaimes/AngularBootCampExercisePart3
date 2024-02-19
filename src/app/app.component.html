@@ -41,17 +41,21 @@
   [tabPanel]="matTabNavPanelRef"
   *ngIf="hideMatTabNavBar$ | async"
 >
-  <a
-    mat-tab-link
-    *ngFor="let link of links"
-    [routerLink]="link.path"
-    [routerLinkActiveOptions]="{ exact: link.exact || false }"
-    routerLinkActive
-    #routerLinkActiveRef="routerLinkActive"
-    [active]="routerLinkActiveRef.isActive"
-  >
-    {{ link.label }}
-  </a>
+  <ng-container *ngIf="loggedAs$ | async as loggedAs">
+    <ng-container *ngFor="let link of links">
+      <a
+        *ngIf="link.visible.includes(loggedAs)"
+        mat-tab-link
+        [routerLink]="link.path"
+        [routerLinkActiveOptions]="{ exact: link.exact || false }"
+        routerLinkActive
+        #routerLinkActiveRef="routerLinkActive"
+        [active]="routerLinkActiveRef.isActive"
+      >
+        {{ link.label }}
+      </a>
+    </ng-container>
+  </ng-container>
 </nav>
 <mat-tab-nav-panel #matTabNavPanelRef>
   <router-outlet></router-outlet>
