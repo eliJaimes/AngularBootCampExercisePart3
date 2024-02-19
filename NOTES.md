@@ -406,3 +406,15 @@ ng generate module album/album2 --flat true --routing true --dry-run
 ```shell
 ng generate module user/user2 --flat true --routing true --dry-run
 ```
+
+## Improve lazy loading with a CanMath guard
+
+- Depending on the Angular version you are using, CanLoad will be the guard to used, which is deprecated now
+
+```shell
+ng generate guard guards/isLoggedForCanMatchFunctional --skip-tests --dry-run
+> ? Which type of guard would you like to create? CanMatch
+```
+
+- Modify the isLoggedForCanMatchFunctional guard to be a high order function
+- Remove 'canActivate' for 'canMatch' property on 'albums' and 'users' path on 'src\app\app-routing.module.ts'
